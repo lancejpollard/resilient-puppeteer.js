@@ -43,12 +43,16 @@ const resilient = {
     const page = this.page = await browser.newPage()
     log('created page')
 
-    log('authenticating')
-    await page.authenticate({
-      username: config.username,
-      password: config.password,
-    })
-    log('authenticated')
+    if (username && password) {
+      log('authenticating')
+      await page.authenticate({
+        username: config.username,
+        password: config.password,
+      })
+      log('authenticated')
+    } else {
+      log('skipping authentication')
+    }
 
     // save for later.
     this.settings = {
