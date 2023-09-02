@@ -2,7 +2,8 @@
   "name": "@lancejpollard/resilient-puppeteer.js",
   "version": "0.0.1",
   "dependencies": {
-    "puppeteer-extra": "^3.2.3",
-    "puppeteer-extra-plugin-stealth": "^2.9.0"
+    "puppeteer": "^21.1.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
   }
 }

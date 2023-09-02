@@ -67,27 +67,30 @@ const resilient = {
     return browser
   },
 
-  async visit(url, attempt = 1) {
+  async visit(url, { attempt, waitUntil } = { attempt: 1, waitUntil: 'domcontentloaded' }) {
     const { browser, page, maxRetryAttempts: max } = this
 
-    if (max && attempt > max) {
+    let atmp = attempt ?? 1
+    let until = waitUntil ?? 'domcontentloaded'
+
+    if (max && atmp > max) {
       log(`abandoning ${url}`)
       return
     }
 
-    if (attempt === 1) {
+    if (atmp === 1) {
       log(`visit ${url}`)
     } else {
-      log(`try ${attempt} ${url}`)
+      log(`try ${atmp} ${url}`)
     }
 
     try {
-      return await page.goto(url, { waitUntil: 'domcontentloaded' })
+      return await page.goto(url, { waitUntil: until })
     } catch (e) {
       log(e)
       await browser.close()
       await this.launch(this.settings)
-      await this.visit(url, attempt + 1)
+      await this.visit(url, { attempt: atmp + 1, waitUntil: until })
     }
   },
 
