@@ -18,6 +18,7 @@ type LaunchOptions = {
   headless?: boolean
   maxRetryAttempts?: number
   password?: string
+  protocolTimeout?: number
   proxy?: string
   session?: string
   username?: string
@@ -71,8 +72,13 @@ const resilient: Resilient = {
       password,
       maxRetryAttempts = 5,
       args = [],
+      protocolTimeout = 500000,
     } = opts ?? {}
-    const config: PuppeteerLaunchOptions = { args, headless }
+    const config: PuppeteerLaunchOptions = {
+      args,
+      headless,
+      protocolTimeout,
+    }
 
     if (session) {
       config.userDataDir = session
@@ -143,7 +149,8 @@ const resilient: Resilient = {
       if (e instanceof Error) {
         log(e.message)
       }
-      await browser?.close()
+      await this.page?.close()
+      await this.browser?.close()
       await this.launch(this.settings as LaunchOptions)
       await this.visit(url, { attempt: atmp + 1, waitUntil: until })
     }

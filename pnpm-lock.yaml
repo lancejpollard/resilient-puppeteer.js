@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@lancejpollard/resilient-puppeteer.js':
+        specifier: ^0.2.0
+        version: 0.2.0(puppeteer-core@22.13.1)(typescript@5.5.4)
       puppeteer:
         specifier: ^22.13.1
         version: 22.13.1(typescript@5.5.4)
@@ -392,6 +395,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
+
+  '@lancejpollard/resilient-puppeteer.js@0.2.0':
+    resolution: {integrity: sha512-Sxl9WO+okugMyrfJRxCUNF8oYHadYpF37nnrrkGFCkV0aO5kheS7zG4n161VsRbEyaEirIFUYhr28RcqNRc7CA==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2576,6 +2582,20 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  '@lancejpollard/resilient-puppeteer.js@0.2.0(puppeteer-core@22.13.1)(typescript@5.5.4)':
+    dependencies:
+      puppeteer: 22.13.1(typescript@5.5.4)
+      puppeteer-extra: 3.3.6(puppeteer-core@22.13.1)(puppeteer@22.13.1(typescript@5.5.4))
+      puppeteer-extra-plugin-stealth: 2.11.2(puppeteer-extra@3.3.6(puppeteer-core@22.13.1)(puppeteer@22.13.1(typescript@5.5.4)))
+    transitivePeerDependencies:
+      - '@types/puppeteer'
+      - bufferutil
+      - playwright-extra
+      - puppeteer-core
+      - supports-color
+      - typescript
+      - utf-8-validate
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
